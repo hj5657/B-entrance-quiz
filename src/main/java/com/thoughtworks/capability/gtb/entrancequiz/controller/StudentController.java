@@ -1,6 +1,7 @@
 package com.thoughtworks.capability.gtb.entrancequiz.controller;
 
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Student;
+import com.thoughtworks.capability.gtb.entrancequiz.domain.StudentList;
 import com.thoughtworks.capability.gtb.entrancequiz.service.StudentService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,5 +26,11 @@ public class StudentController {
     public ResponseEntity getAllStudents() {
         List<Student> students = studentService.getAllStudents();
         return ResponseEntity.ok(students);
+    }
+
+    @GetMapping("studentList")
+    public ResponseEntity getDivideStudents() {
+        StudentList studentList = studentService.divideAll();
+        return ResponseEntity.ok(studentList);
     }
 }

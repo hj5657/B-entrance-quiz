@@ -1,9 +1,11 @@
 package com.thoughtworks.capability.gtb.entrancequiz.service;
 
 import com.thoughtworks.capability.gtb.entrancequiz.domain.Student;
+import com.thoughtworks.capability.gtb.entrancequiz.domain.StudentList;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -11,6 +13,7 @@ import java.util.List;
  */
 @Service
 public class StudentService {
+    private List<Student> students= new ArrayList<>();
     private String[] names = {"成吉思汗",
             "鲁班七号",
             "太乙真人",
@@ -33,11 +36,25 @@ public class StudentService {
             Student student = new Student(i,names[i-1]);
             students.add(student);
         }
-        return students;
+        this.students=students;
+        return this.students;
     }
 
-    public void divideAll() {
-
+    public StudentList divideAll() {
+        StudentList studentList = new StudentList();
+        int formatter[] = new int[6];
+        Collections.shuffle(students);
+        studentList.setStudents(students);
+        int len=students.size()/6;
+        int remainder=students.size()%6;
+        for (int i=0;i<6;i++){
+            formatter[i]=len;
+            if (remainder > i){
+                formatter[i]+=1;
+            }
+        }
+        studentList.setFormatter(formatter);
+        return studentList;
     }
 
     public List<Student> getAllStudents() {
