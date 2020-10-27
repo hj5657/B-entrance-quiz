@@ -28,7 +28,7 @@ public class StudentController {
         return ResponseEntity.ok(students);
     }
 
-    @GetMapping("studentList")
+    @GetMapping("/studentList")
     public ResponseEntity getDivideStudents() {
         StudentList studentList = studentService.divideAll();
         return ResponseEntity.ok(studentList);
