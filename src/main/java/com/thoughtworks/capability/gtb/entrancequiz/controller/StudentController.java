@@ -22,6 +22,8 @@ public class StudentController {
         this.studentService = studentService;
     }
 
+    // TODO GTB-知识点: - @RestController和ResponseEntity使用重复
+    // TODO GTB-知识点: - ResponseEntity应指定类型参数
     @GetMapping("/students")
     public ResponseEntity getAllStudents() {
         List<Student> students = studentService.getAllStudents();

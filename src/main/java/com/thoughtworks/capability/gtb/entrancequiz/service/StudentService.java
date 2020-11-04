@@ -42,6 +42,7 @@ public class StudentService {
 
     public StudentList divideAll() {
         StudentList studentList = new StudentList();
+        // TODO GTB-工程实践: - 请使用Java-style的数组声明，如int[] formatter = new int[6]
         int formatter[] = new int[6];
         Collections.shuffle(students);
         studentList.setStudents(students);
